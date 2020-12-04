@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="64x64">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reproductor JS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--<button onclick="playVid()" type="button">Play</button>
+        <button onclick="pauseVid()" type="button">Pause</button><br>-->
+        <h1>EMJ Music Player</h1>
+        <img src="images/radio1.gif" alt="">
+        <script>
+            function cambiarTrack(track) {
+                var path = track.getAttribute("path")
+                viejo_audio = document.getElementById("reproductor")
+                audio_padre = viejo_audio.parentNode
+                audio_padre.removeChild(viejo_audio)
+                nuevo_audio = document.createElement("audio")
+                nuevo_audio.setAttribute("id", "reproductor")
+                nuevo_audio.setAttribute("controls", "controls")
+                nuevo_audio.setAttribute("autoplay", "autoplay")
+                source = document.createElement("source")
+                source.setAttribute("src", path)
+                source.setAttribute("type", "audio/mpeg")
+                source.setAttribute("id", "reproductorSource")
+                nuevo_audio.appendChild(source)
+                audio_padre.appendChild(nuevo_audio)
+            }
+
+            function cargarReproductor() {
+                var select = document.getElementById("selectTrack")
+                var path = select.options[0].getAttribute("path")
+                nuevo_audio = document.createElement("audio")
+                nuevo_audio.setAttribute("id", "reproductor")
+                nuevo_audio.setAttribute("controls", "controls")
+                source = document.createElement("source")
+                source.setAttribute("src", path)
+                source.setAttribute("type", "audio/mpeg")
+                source.setAttribute("id", "reproductorSource")
+                nuevo_audio.appendChild(source)
+                padre = document.getElementById("reproductorBox")
+                padre.appendChild(nuevo_audio)
+            }
+        </script>
+
+        <div id="reproductorBox">
+            <select id="selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
+                
+        <option path="lista_music/Eagles - Hotel California.mp3">Eagles - Hotel California</option>
+        <option path="lista_music/Kygo ft. Sasha Sloan - I'll Wait.mp3">Kygo & Sasha Sloan - I'll Wait</option>
+        <option path="lista_music/Mike Posner - I Took A Pill In Ibiza.mp3">Mike Posner - I Took A Pill In Ibiza</option>
+        <option path="lista_music/Hozier - Take Me To Church.mp3">Hozier - Take Me To Church</option>
+        <option path="lista_music/Imagine Dragons - West Coast.mp3">Imagine Dragons - West Coast</option>
+        <option path="lista_music/Matt Maher - Your Love Defends Me.mp3">Matt Maher - Your Love Defends Me</option>
+        <option path="lista_music/Nina Simone - Feeling Good.mp3">Nina Simone - Feeling Good</option> 
+        <option path="lista_music/Aretha Franklin - Ain't No Way.mp3">Aretha Franklin - Ain't No Way</option>
+        </div>
+    
+    <script>
+        cargarReproductor();
+    </script>
+  
+  <script> 
+var vid = document.getElementById("reproductor"); 
+
+function playVid() { 
+  vid.play(); 
+} 
+
+function pauseVid() { 
+  vid.pause(); 
+} 
+</script> 
+
+</div>
+  
+
+</body>
+
+</html>
